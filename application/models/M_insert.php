@@ -11,17 +11,12 @@ class M_insert extends CI_Model{
 
     public function insertuser($data){
         $this->db->insert('user',$data);
-    }
-
-    public function insertprofile($data){
-        $this->db->insert('profile',$data);
-        return $this->db->insert_id();
-    }
-
-    public function cekuser($user){
-        $this->db->from('user');
-        $this->db->where('id_user',$user);
-        return $this->db->get()->num_rows();
+        $error = $this->db->error();
+        if(!empty($error)){
+            return $error;
+        }else {
+            return 'Tidak ada error';
+        }
     }
 
 }

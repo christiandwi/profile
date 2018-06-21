@@ -17,19 +17,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body>
 <form method="post" action="<?=base_url('index.php/Welcome/insert')?>" >
-    <label for="user">User :</label>
-    <input type="text" name="user" id="user">
+    <label for="nama">Nama :</label>
+    <input type="text" name="nama" id="nama">
     <br>
     <br>
-    <label for="gender">Gender :</label>
-    <select name="gender" id="gender">
-        <option value="laki-laki">Laki-laki</option>
-        <option value="perempuan">Perempuan</option>
-    </select>
+    <label for="email">Email :</label>
+    <input name="email" id="email">
     <br>
     <br>
-    <label for="usia">Usia :</label>
-    <input type="number" min="0" name="usia" id="usia">
+    <label for="born_date">Born date :</label>
+    <input type="date" name="born_date" id="born_date">
     <br>
     <br>
     <br>

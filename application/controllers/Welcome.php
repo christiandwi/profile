@@ -15,38 +15,29 @@ class Welcome extends CI_Controller {
 	}
 
 	public function insert(){
-	    $user = $this->input->post('user');
-	    $gender = $this->input->post('gender');
-	    $usia = $this->input->post('usia');
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+        $born_date = $this->input->post('born_date');
 
-	    if($user == null || $gender == null || $usia == null){
-            $errornya = 422;
-            show_error('Not null exception',$errornya,'Error '.$errornya);
+        $data=array(
+            'id_user' => null,
+            'nama' => $nama,
+            'email' => $email,
+            'born_date' => $born_date
+        );
 
-        }else {
-            if ($this->M_insert->cekuser($user) > 0) {
-                $errornya = 400;
-                show_error('Duplicate key entry',$errornya,'Error '.$errornya);
-            } else {
-                $profile = array(
-                    'id_profile' => null,
-                    'gender' => $gender,
-                    'usia' => $usia
-                );
-
-                $idprofil = $this->M_insert->insertprofile($profile);
-
-                $userinsert = array(
-                    'id_user' => $user,
-                    'id_profile' => $idprofil
-                );
-
-                $this->M_insert->insertuser($userinsert);
-            }
+        $pesan = $this->M_insert->insertuser($data);
+        if($pesan['code']==0){
+            echo 'tidak ada error dalam proses penyimpanan<br>';
+            echo '<a href="'.base_url().'">kembali</a>';
+        }elseif($pesan['code']==1071){
+            echo 'max key length error 1071';
+        }elseif($pesan['code']==1067){
+            echo 'invalid default value error 1067';
         }
-
-        redirect('/');
-
+        else {
+            echo 'kode error : ' . $pesan['code'] . '<br> pesan error : ' . $pesan['message'];
+        }
     }
 
 }
