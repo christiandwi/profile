@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2018 at 03:23 PM
+-- Generation Time: Jun 21, 2018 at 08:04 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,55 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profile`
---
-
-CREATE TABLE `profile` (
-  `id_profile` int(11) NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `usia` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profile`
---
-
-INSERT INTO `profile` (`id_profile`, `gender`, `usia`) VALUES
-(1, 'a', 1),
-(2, 'a', 1),
-(3, 'perempuan', 1),
-(4, 'perempuan', 1),
-(5, 'perempuan', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id_user` varchar(20) NOT NULL,
-  `id_profile` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `born_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id_user`, `id_profile`) VALUES
-('a', 1),
-('aa', 4),
-('asdfa', 5);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`id_profile`);
 
 --
 -- Indexes for table `user`
@@ -86,10 +50,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `profile`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
